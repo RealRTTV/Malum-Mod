@@ -6,10 +6,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
 
-import static com.sammy.malum.client.screen.codex.ProgressionBookScreen.objects;
+import static com.sammy.malum.client.screen.codex.ProgressionBookScreen.OBJECTS;
 
-public class VanishingEntryObject extends EntryObject
-{
+public class VanishingEntryObject extends EntryObject {
     public VanishingEntryObject(BookEntry entry, int posX, int posY) {
         super(entry, posX, posY);
     }
@@ -18,6 +17,6 @@ public class VanishingEntryObject extends EntryObject
     public void exit() {
         Player playerEntity = Minecraft.getInstance().player;
         playerEntity.playNotifySound(SoundRegistry.SUSPICIOUS_SOUND.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
-        objects.remove(this);
+        OBJECTS.remove(this);
     }
 }

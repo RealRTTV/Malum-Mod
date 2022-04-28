@@ -13,6 +13,8 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
 
+import java.util.ArrayList;
+
 import static com.sammy.malum.client.screen.codex.ProgressionBookScreen.isHovering;
 import static com.sammy.malum.client.screen.codex.ProgressionBookScreen.renderTexture;
 import static com.sammy.ortus.systems.rendering.particle.screen.base.ScreenParticle.RenderOrder.BEFORE_TOOLTIPS;
@@ -41,11 +43,12 @@ public class EntryScreen extends Screen {
         int guiLeft = (width - bookWidth) / 2;
         int guiTop = (height - bookHeight) / 2;
         renderTexture(BOOK_TEXTURE, poseStack, guiLeft, guiTop, 1, 1, bookWidth, bookHeight, 512, 512);
-        if (!openEntry.pages.isEmpty()) {
+        ArrayList<BookPage> pages = openEntry.states.get(0).pages;
+        if (!pages.isEmpty()) {
             int openPages = grouping * 2;
             for (int i = openPages; i < openPages + 2; i++) {
-                if (i < openEntry.pages.size()) {
-                    BookPage page = openEntry.pages.get(i);
+                if (i < pages.size()) {
+                    BookPage page = pages.get(i);
                     if (i % 2 == 0) {
                         page.renderBackgroundLeft(minecraft, poseStack, ProgressionBookScreen.screen.xOffset, ProgressionBookScreen.screen.yOffset, mouseX, mouseY, partialTicks);
                     } else {
@@ -60,7 +63,7 @@ public class EntryScreen extends Screen {
         } else {
             renderTexture(BOOK_TEXTURE, poseStack, guiLeft - 13, guiTop + 150, 1, 213, 28, 18, 512, 512);
         }
-        if (grouping < openEntry.pages.size() / 2f - 1) {
+        if (grouping < pages.size() / 2f - 1) {
             renderTexture(BOOK_TEXTURE, poseStack, guiLeft + bookWidth - 15, guiTop + 150, 30, 193, 28, 18, 512, 512);
             if (isHovering(mouseX, mouseY, guiLeft + bookWidth - 15, guiTop + 150, 28, 18)) {
                 renderTexture(BOOK_TEXTURE, poseStack, guiLeft + bookWidth - 15, guiTop + 150, 30, 232, 28, 18, 512, 512);
@@ -68,11 +71,11 @@ public class EntryScreen extends Screen {
                 renderTexture(BOOK_TEXTURE, poseStack, guiLeft + bookWidth - 15, guiTop + 150, 30, 213, 28, 18, 512, 512);
             }
         }
-        if (!openEntry.pages.isEmpty()) {
+        if (!pages.isEmpty()) {
             int openPages = grouping * 2;
             for (int i = openPages; i < openPages + 2; i++) {
-                if (i < openEntry.pages.size()) {
-                    BookPage page = openEntry.pages.get(i);
+                if (i < pages.size()) {
+                    BookPage page = pages.get(i);
                     if (i % 2 == 0) {
                         page.renderLeft(minecraft, poseStack, ProgressionBookScreen.screen.xOffset, ProgressionBookScreen.screen.yOffset, mouseX, mouseY, partialTicks);
                     } else {
@@ -128,7 +131,9 @@ public class EntryScreen extends Screen {
     }
 
     public void nextPage() {
-        if (grouping < openObject.entry.pages.size() / 2f - 1) {
+        BookEntry openEntry = openObject.entry;
+        ArrayList<BookPage> pages = openEntry.states.get(0).pages;
+        if (grouping < pages.size() / 2f - 1) {
             grouping += 1;
             screen.playSound();
         }

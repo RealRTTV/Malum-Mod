@@ -1,0 +1,45 @@
+{
+  "states": [
+    {
+      "name": "discovery",
+      "pages": [
+        "first_page",
+        "second_page"
+      ]
+    },
+    {
+      "name": "completion",
+      "pages": [
+        "first_page",
+        "completed_page"
+      ]
+    }
+  ],
+  "pages": {
+    "first_page": {
+      "type": "crafting",
+      "recipe": {
+        "output": "minecraft:diamond_ore"
+      }
+    },
+    "second_page": {
+      "type": "headline_task",
+      "task": {
+        "type": "any",
+        "tasks": [
+          {
+            "type": "obtain_item",
+            "tag": "malum:runewood"
+          },
+          {
+            "type": "locate_block",
+            "tag": "malum:runewood"
+          }
+        ]
+      }
+    },
+    "completed_page": {
+      "type": "headline"
+    }
+  }
+}
