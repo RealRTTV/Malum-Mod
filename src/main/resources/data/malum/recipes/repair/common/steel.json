@@ -9,7 +9,8 @@
     }
   ],
   "type": "malum:spirit_repair",
-  "inputLookup": "steel_",
+  "modIdRegex": ".+",
+  "itemIdRegex": "steel_.+",
   "durabilityPercentage": 0.5,
   "inputs": [
   ],

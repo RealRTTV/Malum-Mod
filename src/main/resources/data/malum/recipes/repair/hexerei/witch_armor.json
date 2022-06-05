@@ -6,7 +6,8 @@
     }
   ],
   "type": "malum:spirit_repair",
-  "inputLookup": "hexerei:witch_",
+  "modIdRegex": ".+",
+  "itemIdRegex": "hexerei:witch_.+",
   "durabilityPercentage": 0.5,
   "inputs": [
   ],

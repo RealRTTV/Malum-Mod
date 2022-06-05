@@ -1,6 +1,7 @@
 {
   "type": "malum:spirit_repair",
-  "inputLookup": "none",
+  "modIdRegex": "",
+  "itemIdRegex": "",
   "durabilityPercentage": 1.0,
   "inputs": [
     "malum:cracked_ceaseless_impetus"

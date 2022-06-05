@@ -1,6 +1,7 @@
 {
   "type": "malum:spirit_repair",
-  "inputLookup": "none",
+  "modIdRegex": "",
+  "itemIdRegex": "",
   "durabilityPercentage": 0.75,
   "inputs": [
     "malum:soul_hunter_cloak",

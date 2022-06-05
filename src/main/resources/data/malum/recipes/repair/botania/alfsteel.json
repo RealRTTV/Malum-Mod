@@ -6,10 +6,10 @@
     }
   ],
   "type": "malum:spirit_repair",
-  "inputLookup": "alfsteel_",
+  "modIdRegex": ".+",
+  "itemIdRegex": "alfsteel_.+",
   "durabilityPercentage": 1,
-  "inputs": [
-  ],
+  "inputs": [],
   "repairMaterial": {
     "item": "mysticbotany:alfsteel_ingot",
     "count": 1
